@@ -1,0 +1,123 @@
+.slider-height2 {
+    height: 350px;
+    background-size: cover;
+    margin-top: 50px;
+
+    @media #{$md} {
+        height: 350px;
+        margin-top: 0px;
+    }
+
+    @media #{$sm} {
+        height: 260px;
+        margin-top: 0px;
+    }
+
+    @media #{$xs} {
+        height: 260px;
+        margin-top: 0px;
+    }
+}
+
+.header-transparent {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 9;
+}
+
+.slider-area2 {
+    background-image: url(../img/about/hero.jpeg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+// slick-dot style
+.dot-style {
+    .slick-dots {
+        bottom: 81px;
+        left: 19%;
+        position: absolute;
+    }
+
+    .slick-dots li {
+        display: inline-block;
+    }
+
+    .slick-dots button {
+        // padding: 0;
+        margin-right: 10px;
+        cursor: pointer;
+        background: none;
+        color: #fff;
+        border: 0;
+        font-size: 16px;
+
+    }
+
+    .slick-active button {
+        position: relative;
+        text-decoration: underline;
+        text-decoration-style: solid;
+        padding-bottom: 5px;
+    }
+}
+
+// End dot style
+//
+.hero-overly {
+    position: relative;
+    z-index: 1;
+
+    &::before {
+        position: absolute;
+        content: "";
+        background-color: rgb(2 2 27 / 58%);
+        width: 100%;
+        height: 100%;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        z-index: -1;
+        background-repeat: no-repeat;
+    }
+}
+
+// Another Hero Page
+.slider-area2 {
+    .hero-cap {
+        & h1 {
+            color: #fff;
+            font-size: 45px;
+            font-weight: 700;
+            line-height: 1;
+
+            @media #{$sm} {
+                font-size: 40px;
+            }
+
+            @media #{$xs} {
+                font-size: 35px;
+            }
+        }
+
+        .breadcrumb {
+            background: none;
+            padding: 0;
+            margin: 0;
+
+            a {
+                color: #dcdcdc;
+                font-size: 18px;
+                text-transform: capitalize;
+            }
+        }
+
+        .breadcrumb-item+.breadcrumb-item::before {
+            color: #dcdcdc;
+        }
+    }
+
+}

@@ -1,0 +1,186 @@
+#Força a utilizar Cache-Control e Expires header
+<IfModule mod_headers.c>
+Header unset ETag
+</IfModule>
+FileETag None
+<IfModule mod_expires.c>
+ExpiresActive on
+ExpiresDefault "access plus 1 month"
+ExpiresByType text/cache-manifest "access plus 0 seconds"
+# Html
+ExpiresByType text/html "access plus 0 seconds"
+# Data
+ExpiresByType text/xml "access plus 0 seconds"
+ExpiresByType application/xml "access plus 0 seconds"
+ExpiresByType application/json "access plus 0 seconds"
+# Feed
+ExpiresByType application/rss+xml "access plus 1 hour"
+ExpiresByType application/atom+xml "access plus 1 hour"
+# Favicon
+ExpiresByType image/x-icon "access plus 1 week"
+# Media: images, video, audio
+ExpiresByType image/gif "access plus 1 month"
+ExpiresByType image/png "access plus 1 month"
+ExpiresByType image/jpg "access plus 1 month"
+ExpiresByType image/jpeg "access plus 1 month"
+ExpiresByType video/ogg "access plus 1 month"
+ExpiresByType audio/ogg "access plus 1 month"
+ExpiresByType video/mp4 "access plus 1 month"
+ExpiresByType video/webm "access plus 1 month"
+# HTC files
+ExpiresByType text/x-component "access plus 1 month"
+# Webfonts
+ExpiresByType application/x-font-ttf "access plus 1 month"
+ExpiresByType font/opentype "access plus 1 month"
+ExpiresByType application/x-font-woff "access plus 1 month"
+ExpiresByType image/svg+xml "access plus 1 month"
+ExpiresByType application/vnd.ms-fontobject "access plus 1 month"
+# CSS / JS
+ExpiresByType text/css "access plus 1 year"
+ExpiresByType application/javascript "access plus 1 year"
+ExpiresByType application/x-javascript  "access plus 1 year"
+</IfModule>
+#Força o IE a sempre carregar utilizando a última versão disponível
+<IfModule mod_headers.c>
+Header set X-UA-Compatible "IE=Edge,chrome=1"
+<FilesMatch "\.(js|css|gif|png|jpeg|pdf|xml|oga|ogg|m4a|ogv|mp4|m4v|webm|svg|svgz|eot|ttf|otf|woff|ico|webp|appcache|manifest|htc|crx|oex|xpi|safariextz|vcf)$" >
+Header unset X-UA-Compatible
+</FilesMatch>
+</IfModule>
+<IfModule mod_deflate.c>
+# Compress HTML, CSS, JavaScript, Text, XML and fonts
+AddOutputFilterByType DEFLATE application/javascript
+AddOutputFilterByType DEFLATE application/rss+xml
+AddOutputFilterByType DEFLATE application/vnd.ms-fontobject
+AddOutputFilterByType DEFLATE application/x-font
+AddOutputFilterByType DEFLATE application/x-font-opentype
+AddOutputFilterByType DEFLATE application/x-font-otf
+AddOutputFilterByType DEFLATE application/x-font-truetype
+AddOutputFilterByType DEFLATE application/x-font-ttf
+AddOutputFilterByType DEFLATE application/x-javascript
+AddOutputFilterByType DEFLATE application/xhtml+xml 
+AddOutputFilterByType DEFLATE application/xml
+AddOutputFilterByType DEFLATE font/opentype
+AddOutputFilterByType DEFLATE font/otf
+AddOutputFilterByType DEFLATE font/ttf
+AddOutputFilterByType DEFLATE image/svg+xml
+AddOutputFilterByType DEFLATE image/x-icon
+AddOutputFilterByType DEFLATE text/css
+AddOutputFilterByType DEFLATE text/html
+AddOutputFilterByType DEFLATE text/javascript
+AddOutputFilterByType DEFLATE text/plain
+AddOutputFilterByType DEFLATE text/xml
+
+# Remove browser bugs (only needed for really old browsers)
+BrowserMatch ^Mozilla/4 gzip-only-text/html
+BrowserMatch ^Mozilla/4\.0[678] no-gzip
+BrowserMatch \bMSIE !no-gzip !gzip-only-text/html
+Header append Vary User-Agent
+</IfModule>
+
+ErrorDocument 400 /erro
+ErrorDocument 401 /erro
+ErrorDocument 403 /erro
+ErrorDocument 404 /erro
+ErrorDocument 500 /erro
+
+<IfModule mod_rewrite.c>
+
+RewriteEngine On
+
+
+
+# SE A PÁGINA ESTIVER DENTRO DO SOURCE UTILIZAR ESSA OTIMIZAÇÃO DE URL
+
+RewriteRule ^home?$ index.php [NC]
+#RewriteRule ^([a-z,0-9,A-Z,_-]+)\/?$ $1.php [NC]  
+RewriteRule ^acessorios?$ acessorios.php [NC]
+RewriteRule ^arruelas-fixadoras?$ arruelas-fixadoras.php [NC]
+RewriteRule ^bucha-com-parafuso?$ bucha-com-parafuso.php [NC]
+RewriteRule ^bucha-conica?$ bucha-conica.php [NC]
+RewriteRule ^bucha-e-placa-grafitada?$ bucha-e-placa-grafitada.php [NC]
+RewriteRule ^bucha-esfera?$ bucha-esfera.php [NC]
+RewriteRule ^bucha-guia?$ bucha-guia.php [NC]
+RewriteRule ^buchas-conicas?$ buchas-conicas.php [NC]
+RewriteRule ^catalogo-3d?$ catalogo-3d.php [NC]
+RewriteRule ^catalogos?$ catalogos.php [NC]
+RewriteRule ^clientes?$ clientes.php [NC]
+RewriteRule ^coluna-guia?$ coluna-guia.php [NC]
+RewriteRule ^contato?$ contato.php [NC]
+RewriteRule ^gaiola-de-bronze?$ gaiola-de-bronze.php [NC]
+RewriteRule ^gaiola-em-aluminio?$ gaiola-em-aluminio.php [NC]
+RewriteRule ^gaiola-em-polyacetal?$ gaiola-em-polyacetal.php [NC]
+RewriteRule ^index?$ index.php [NC]
+RewriteRule ^lgpd?$ lgpd.php [NC]
+RewriteRule ^mapa-do-site?$ mapa-do-site.php [NC]
+RewriteRule ^pega-arquivos-e-transforma-em-url?$ pega-arquivos-e-transforma-em-url.php [NC]
+RewriteRule ^politica-de-privacidade?$ politica-de-privacidade.php [NC]
+RewriteRule ^quem-somos?$ quem-somos.php [NC]
+RewriteRule ^fabricacao?$ fabricacao.php [NC]
+RewriteRule ^videos-de-montagem?$ videos-de-montagem.php [NC]
+RewriteRule ^whats-flutuante?$ whats-flutuante.php [NC]
+
+RewriteRule ^aneis-elasticos?$ aneis-elasticos.php [NC]
+RewriteRule ^fixador-central-para-coluna-desmontavel?$ fixador-central-para-coluna-desmontavel.php [NC]
+RewriteRule ^porca-para-fixacao-placa-intermediaria?$ porca-para-fixacao-placa-intermediaria.php [NC]
+RewriteRule ^grampo-para-fixacao-de-buchas-e-colunas-desmontaveis?$ grampo-para-fixacao-de-buchas-e-colunas-desmontaveis.php [NC]
+RewriteRule ^stop-para-gaiolas?$ stop-para-gaiolas.php [NC]
+RewriteRule ^arruela-de-fixacao-da-coluna-conica?$ arruela-de-fixacao-da-coluna-conica.php [NC]
+RewriteRule ^arruela-de-fixacao-da-coluna-conica-com-cone-central?$ arruela-de-fixacao-da-coluna-conica-com-cone-central.php [NC]
+RewriteRule ^porca-para-fixacao-da-bucha-conica-com-rosca?$ porca-para-fixacao-da-bucha-conica-com-rosca.php [NC]
+RewriteRule ^porca-para-coluna-com-cone-e-rosca-central?$ porca-para-coluna-com-cone-e-rosca-central.php [NC]
+RewriteRule ^mola-de-compressao?$ mola-de-compressao.php [NC]
+RewriteRule ^bucha-conica-para-coluna-conica-norma-iso?$ bucha-conica-para-coluna-conica-norma-iso.php [NC]
+RewriteRule ^bucha-conica-para-coluna-com-flange-encaixe-conico?$ bucha-conica-para-coluna-com-flange-encaixe-conico.php [NC]
+RewriteRule ^bucha-conica-com-rosca?$ bucha-conica-com-rosca.php [NC]
+RewriteRule ^bucha-conica-fixada-sem-rosca?$ bucha-conica-fixada-sem-rosca.php [NC]
+RewriteRule ^bucha-guia-para-gaiola-de-esferas-lisa?$ bucha-guia-para-gaiola-de-esferas-lisa.php [NC]
+RewriteRule ^bucha-desmontavel-curta?$ bucha-desmontavel-curta.php [NC]
+RewriteRule ^bucha-desmontavel-curta-sob-desenho?$ bucha-desmontavel-curta-sob-desenho.php [NC]
+RewriteRule ^bucha-desmontavel-longa?$ bucha-desmontavel-longa.php [NC]
+RewriteRule ^bucha-com-flange?$ bucha-com-flange.php [NC]
+RewriteRule ^bucha-com-cabeca?$ bucha-com-cabeca.php [NC]
+RewriteRule ^bucha-guia-gaiola-para-placa-intermediaria?$ bucha-guia-gaiola-para-placa-intermediaria.php [NC]
+
+RewriteRule ^coluna-guia-lisa?$ coluna-guia-lisa.php [NC]
+RewriteRule ^coluna-guia-oblongo-lisa?$ coluna-guia-oblongo-lisa.php [NC]
+RewriteRule ^coluna-guia-com-rosca-lisa?$ coluna-guia-com-rosca-lisa.php [NC]
+
+RewriteRule ^coluna-guia-lisa-oblongo-para-gaiola-presilha-giratoria?$ coluna-guia-lisa-oblongo-para-gaiola-presilha-giratoria.php [NC]
+RewriteRule ^coluna-desmontavel-oblongo?$ coluna-desmontavel-oblongo.php [NC]
+RewriteRule ^coluna-desmontavel-fixador-central?$ coluna-desmontavel-fixador-central.php [NC]
+RewriteRule ^coluna-desmontavel-fixada-grampos?$ coluna-desmontavel-fixada-grampos.php [NC]
+RewriteRule ^coluna-guia-conica?$ coluna-guia-conica.php [NC]
+RewriteRule ^coluna-guia-conica-norma-afnor?$ coluna-guia-conica-norma-afnor.php [NC]
+RewriteRule ^coluna-intermediaria-fixado-por-grampos?$ coluna-intermediaria-fixado-por-grampos.php [NC]
+RewriteRule ^coluna-com-flange-placa-paralela-sob-desenho?$ coluna-com-flange-placa-paralela-sob-desenho.php [NC]
+
+RewriteRule ^coluna-guia-com-flange-cone-central?$ coluna-guia-com-flange-cone-central.php [NC]
+RewriteRule ^coluna-com-rosca-e-cone-central-placa-intermediaria?$ coluna-com-rosca-e-cone-central-placa-intermediaria.php [NC]
+RewriteRule ^coluna-sem-rosca-e-cone-central-placa-intermediaria?$ coluna-sem-rosca-e-cone-central-placa-intermediaria.php [NC]
+RewriteRule ^coluna-para-molde?$ coluna-para-molde.php [NC]
+RewriteRule ^gaiola-lisa?$ gaiola-lisa.php [NC] 
+RewriteRule ^gaiola-anel-elastico-externo?$ gaiola-anel-elastico-externo.php [NC]
+RewriteRule ^gaiola-com-arruela?$ gaiola-com-arruela.php [NC]
+RewriteRule ^gaiola-em-aluminio-anti-deslizante?$ gaiola-em-aluminio-anti-deslizante.php [NC]
+RewriteRule ^gaiola-com-limitador-de-altura?$ gaiola-com-limitador-de-altura.php [NC]
+RewriteRule ^gaiola-com-presilha-giratoria?$ gaiola-com-presilha-giratoria.php [NC]
+RewriteRule ^gaiola-em-bronze-lisa?$ gaiola-em-bronze-lisa.php [NC]
+RewriteRule ^gaiola-em-bronze-com-anel-elastico-externo?$ gaiola-em-bronze-com-anel-elastico-externo.php [NC]
+RewriteRule ^gaiola-em-bronze-com-arruela?$ gaiola-em-bronze-com-arruela.php [NC]
+RewriteRule ^gaiola-em-bronze-com-anti-deslizante?$ gaiola-em-bronze-com-anti-deslizante.php [NC]
+RewriteRule ^gaiola-em-bronze-com-limitador-de-altura?$ gaiola-em-bronze-com-limitador-de-altura.php [NC]
+RewriteRule ^gaiola-em-bronze-com-presilha-giratoria?$ gaiola-em-bronze-com-presilha-giratoria.php [NC]
+RewriteRule ^gaiola-em-polyacetal-com-anel-elastico-externo?$ gaiola-em-polyacetal-com-anel-elastico-externo.php [NC]
+RewriteRule ^gaiola-em-polyacetal-lisa?$ gaiola-em-polyacetal-lisa.php [NC]
+
+RewriteRule ^arruela-de-fixacao-da-coluna-conica-iso?$ arruela-de-fixacao-da-coluna-conica-iso.php [NC]
+RewriteRule ^limitador-de-gaiola-tipo-1?$ limitador-de-gaiola-tipo-1.php [NC]
+RewriteRule ^limitador-de-gaiola-tipo-2?$ limitador-de-gaiola-tipo-2.php [NC]
+RewriteRule ^porca-para-bucha-conica-e-coluna-com-flange-encaixe-conico?$ porca-para-bucha-conica-e-coluna-com-flange-encaixe-conico.php [NC]
+RewriteRule ^bucha-conica-para-coluna-conica-norma-afnor?$ bucha-conica-para-coluna-conica-norma-afnor.php [NC]
+
+
+
+</IfModule>
+ 
